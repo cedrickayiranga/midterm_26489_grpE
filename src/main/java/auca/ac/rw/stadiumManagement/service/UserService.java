@@ -78,4 +78,12 @@ public class UserService {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
         return userRepository.findAll(pageable);
     }
+
+    public List<User> getUsersByLocationCode(String code) {
+        return userRepository.findAllUsersByLocationCode(code);
+    }
+
+    public List<User> getUsersByLocationName(String name) {
+        return userRepository.findAllUsersByLocationName(name);
+    }
 }

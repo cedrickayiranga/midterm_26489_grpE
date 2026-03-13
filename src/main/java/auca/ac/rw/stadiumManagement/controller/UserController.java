@@ -62,4 +62,14 @@ public class UserController {
             @RequestParam(defaultValue = "name") String sort) {
         return ResponseEntity.ok(userService.getUsersPaginated(page, size, sort));
     }
+
+    @GetMapping("/by-location-code")
+    public ResponseEntity<?> getByLocationCode(@RequestParam String code) {
+        return ResponseEntity.ok(userService.getUsersByLocationCode(code));
+    }
+
+    @GetMapping("/by-location-name")
+    public ResponseEntity<?> getByLocationName(@RequestParam String name) {
+        return ResponseEntity.ok(userService.getUsersByLocationName(name));
+    }
 }

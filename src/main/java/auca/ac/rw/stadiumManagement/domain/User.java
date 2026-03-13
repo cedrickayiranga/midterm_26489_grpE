@@ -1,11 +1,12 @@
 package auca.ac.rw.stadiumManagement.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "app_user") // 'user' is often a reserved word in DBs
+@Table(name = "app_user") 
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -25,6 +26,7 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "location_id")
+    @JsonIgnoreProperties("parent")
     private Location location;
 
     @OneToOne(mappedBy = "user")

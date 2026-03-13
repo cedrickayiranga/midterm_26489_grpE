@@ -35,4 +35,10 @@ public interface UserRepository extends JpaRepository<User, UUID> {
            "(u.location.parent IS NOT NULL AND u.location.parent.parent IS NOT NULL AND u.location.parent.parent.parent IS NOT NULL AND u.location.parent.parent.parent.type = auca.ac.rw.stadiumManagement.domain.ELocationType.PROVINCE AND u.location.parent.parent.parent.name = :name) OR " +
            "(u.location.parent IS NOT NULL AND u.location.parent.parent IS NOT NULL AND u.location.parent.parent.parent IS NOT NULL AND u.location.parent.parent.parent.parent IS NOT NULL AND u.location.parent.parent.parent.parent.type = auca.ac.rw.stadiumManagement.domain.ELocationType.PROVINCE AND u.location.parent.parent.parent.parent.name = :name)")
     List<User> findAllUsersByProvinceName(@Param("name") String name);
+
+    @Query("SELECT u FROM User u WHERE u.location.code = :code")
+    List<User> findAllUsersByLocationCode(@Param("code") String code);
+
+    @Query("SELECT u FROM User u WHERE u.location.name = :name")
+    List<User> findAllUsersByLocationName(@Param("name") String name);
 }

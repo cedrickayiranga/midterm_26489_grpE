@@ -1,5 +1,6 @@
 package auca.ac.rw.stadiumManagement.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.util.UUID;
 
@@ -17,8 +18,9 @@ public class Location {
     @Enumerated(EnumType.STRING)
     private ELocationType type;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_id")
+    @JsonIgnoreProperties("parent")
     private Location parent;
 
     public Location() {

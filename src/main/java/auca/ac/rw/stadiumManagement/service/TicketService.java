@@ -25,8 +25,7 @@ public class TicketService {
         }
         Booking booking = bookingRepository.findById(t.getBooking().getId()).get();
         if (ticketRepository.existsByBooking(booking)) {
-            // Check if we need a limit, but the prompt just says check existsByBooking limit if needed
-            // For now, let's just save it or check if it already exists
+           
         }
         t.setBooking(booking);
         ticketRepository.save(t);
